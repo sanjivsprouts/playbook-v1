@@ -1,0 +1,159 @@
+.criteria-container {
+  background-color: #f3f5f5;
+  padding: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    gap: 50px;
+    button {
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      background-color: #1c64f2;
+      color: white;
+    }
+  }
+  .body {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    overflow-y: scroll;
+    margin-bottom: 70px;
+    height: calc(100vh - 200px);
+    p {
+      width: 100%;
+      display: flex;
+      padding: 5px;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+    }
+    .ruleset {
+      background-color: white;
+      padding: 30px;
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid #e5e7eb;
+      .head {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #e5e7eb;
+        padding-bottom: 10px;
+        background-color: white;
+        button {
+          padding: 10px;
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+          font-weight: 500;
+          margin-left: 10px;
+          background-color: #1c64f2;
+          color: white;
+        }
+        .delete {
+          background-color: transparent;
+          color: #0e2933;
+        }
+      }
+      .criteria-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+        align-items: center;
+        background-color: white;
+        .criterion {
+          display: flex;
+          gap: 20px;
+          justify-content: space-around;
+          width: 100%;
+          background-color: white;
+          button {
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            margin-left: 10px;
+          }
+          input {
+            height: 40px;
+          }
+        }
+      }
+    }
+  }
+  .body::-webkit-scrollbar {
+    display: none;
+  }
+
+  .footer {
+    position: fixed;
+    bottom: 0;
+    background-color: white;
+    padding: 10px;
+    width: 100%;
+    margin-top: 10px;
+    align-items: center;
+    justify-content: end;
+    gap: 10px;
+    display: flex;
+    padding-right: 30px;
+    margin-left: -15px;
+    button {
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      background-color: #1c64f2;
+      color: white;
+      width: 80px;
+    }
+    .b1 {
+      background-color: transparent;
+      color: black;
+    }
+  }
+}
+.input-field {
+  width: 200px;
+  padding: 8px;
+  margin: 5px;
+  height: 50px;
+}
+.date-range-picker {
+  // width: 300px; /* Set desired width */
+  height: 300px; /* Set desired height */
+  overflow: hidden; /* Ensures content fits within bounds */
+}
+
+.date-range-picker .rdrCalendarWrapper {
+  // max-width: 300px; /* Restrict calendar width */
+  // max-height: 200px; /* Restrict calendar height */
+}
+
+.date-range-picker .rdrDateDisplayWrapper {
+  font-size: 12px; /* Adjust font size if needed */
+}
+
+.date-range-picker .rdrDay {
+  height: 25px; /* Adjust day cell size */
+  width: 25px;
+  font-size: 10px; /* Adjust text size */
+}
