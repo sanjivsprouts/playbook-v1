@@ -3,6 +3,15 @@
   .body {
     width: 100%;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    .upper {
+      background-color: white;
+      border-radius: 10px;
+      border: 1px solid #e5e7eb;
+      padding: 20px;
+    }
     .name-section {
       width: 100%;
       display: flex;
@@ -10,12 +19,16 @@
       justify-content: center;
       align-items: center;
       padding: 10px;
-      gap: 15px;
+      gap: 10px;
+      span {
+        color: red;
+      }
       input {
         width: 400px;
         height: 40px;
         text-align: center;
-        border: 5px;
+        border: 1px solid;
+        border-radius: 5px;
       }
     }
     .entity-section {
@@ -29,6 +42,12 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        gap: 5px;
+        p{
+          display: flex;
+          align-items: center;
+          gap: 3px;
+        }
         button {
           padding: 10px;
           border: none;
@@ -38,6 +57,17 @@
           background-color: #1c64f2;
           color: white;
           width: 150px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 4px;
+        }
+        .input-field {
+          width: 200px;
+          height: 40px;
+          text-align: center;
+          border: 1px solid;
+          border-radius: 5px;
         }
       }
     }
@@ -48,17 +78,44 @@
       background-color: aliceblue;
       padding: 10px;
       align-items: center;
-      max-height: calc(100vh - 315px);
+      max-height: calc(100vh - 355px);
       overflow: scroll;
       background-color: white;
       border: 1px solid #e5e7eb;
       border-radius: 8px;
-      min-height: 0;
+      height: 230px;
       gap: 10px;
       .criterion {
         width: 100%;
         display: flex;
         justify-content: space-evenly;
+        align-items: center;
+      }
+      .input-field{
+        width: 300px;
+        height: 40px;
+        text-align: center;
+        border: 1px solid;
+        border-radius: 5px;
+      }
+      .empty{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+        h1{
+          font-size: 18px;
+          display: flex;
+          gap: 4px;
+          align-items: center;
+        }
+        p{
+          font-size: 10px;
+          color: #0e2933;
+        }
       }
     }
     .criteria-list::-webkit-scrollbar {

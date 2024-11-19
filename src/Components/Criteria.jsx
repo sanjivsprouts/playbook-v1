@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { fieldData } from "../FieldData"; // Assuming your array is in fieldData.js
+import React from "react";
+import { fieldData } from "../FieldData";
 import { useNavigate } from "react-router-dom";
-import "react-date-range/dist/styles.css"; // main style file
-import "react-date-range/dist/theme/default.css"; // theme css file
-import { DateRangePicker } from "react-date-range";
-import dayjs from "dayjs";
 import { toast } from "react-toastify";
+import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
+import AlignVerticalCenterOutlinedIcon from "@mui/icons-material/AlignVerticalCenterOutlined";
+import PlaylistRemoveOutlinedIcon from "@mui/icons-material/PlaylistRemoveOutlined";
+import InsightsOutlinedIcon from "@mui/icons-material/InsightsOutlined";
+import NotificationsActiveOutlinedIcon from "@mui/icons-material/NotificationsActiveOutlined";
+import AlignHorizontalLeftOutlinedIcon from "@mui/icons-material/AlignHorizontalLeftOutlined";
 const Criteria = ({
   addNewRuleset,
   rulesets,
@@ -22,18 +24,37 @@ const Criteria = ({
   return (
     <div className="criteria-container">
       <div className="header">
-        <h1>Set up Criteria</h1>
-        <button onClick={addNewRuleset}>Add new Ruleset</button>
+        <div>
+          <h1>Set up Criteria</h1>
+          <p>
+            Provide some rulesets for comparing between playbooks | Action will
+            trigger if one of the ruleset matches
+          </p>
+        </div>
+        <button onClick={addNewRuleset}>
+          {" "}
+          <InsightsOutlinedIcon />
+          Add new Ruleset
+        </button>
       </div>
       <div className="body">
-        {rulesets.map((ruleset) => (
+        {rulesets.map((ruleset, idx) => (
           <React.Fragment key={ruleset.id}>
             <div className="ruleset">
               <div className="head">
-                <h3>Ruleset</h3>
-                <div>
-                  <button onClick={() => addCriteria(ruleset.id)}>
-                    Add Criteria
+                <div className="upper">
+                  <h4>
+                    <AlignHorizontalLeftOutlinedIcon />
+                    Ruleset ({idx + 1})
+                  </h4>
+                  <span>Select some criteria</span>
+                </div>
+                <div className="btn-grp">
+                  <button
+                    onClick={() => addCriteria(ruleset.id)}
+                    className="b1"
+                  >
+                    <AlignVerticalCenterOutlinedIcon /> Add Criteria
                   </button>
                   <button
                     onClick={() => deleteRuleset(ruleset.id)}
@@ -42,7 +63,9 @@ const Criteria = ({
                       backgroundColor: "red",
                       color: "white",
                     }}
+                    className="delete"
                   >
+                    <PlaylistRemoveOutlinedIcon />
                     Delete Ruleset
                   </button>
                 </div>
@@ -109,6 +132,7 @@ const Criteria = ({
                             )
                           }
                           className="input-field"
+                          disabled={!field2}
                         >
                           <option value="">Select Option</option>
                           {field1 &&
@@ -129,6 +153,7 @@ const Criteria = ({
                               e.target.value
                             )
                           }
+                          disabled={!field2}
                           className="input-field"
                         >
                           <option value="">Select Option</option>
@@ -154,6 +179,7 @@ const Criteria = ({
                                   e.target.value
                                 )
                               }
+                              disabled={!field2}
                             />
                           </div>
                         )}
@@ -171,6 +197,7 @@ const Criteria = ({
                                   e.target.value
                                 )
                               }
+                              disabled={!field2}
                             />
                           </div>
                         )}
@@ -205,6 +232,7 @@ const Criteria = ({
                             )
                           }
                           className="input-field"
+                          disabled={!field2}
                         >
                           <option value="">Select Option</option>
                           <option value="true">True</option>
@@ -217,13 +245,20 @@ const Criteria = ({
                           removeCriterion(ruleset.id, criterion.id)
                         }
                         style={{
-                          marginLeft: "10px",
-                          backgroundColor: "red",
+                          border: "none",
+                          borderRadius: "8px",
+                          cursor: "pointer",
+                          fontWeight: 500,
                           color: "white",
-                          height: "50px",
+                          width: "30px",
+                          height: "34px",
+                          background: "red",
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
                         }}
                       >
-                        Remove Criterion
+                        <DeleteOutlinedIcon />
                       </button>
                     </div>
                   );
@@ -232,6 +267,15 @@ const Criteria = ({
             </div>
           </React.Fragment>
         ))}
+        {rulesets.length === 0 && (
+          <div className="empty">
+            <h1>
+              <NotificationsActiveOutlinedIcon />
+              No ruleset defined yet
+            </h1>
+            <p>Please add some ruleset</p>
+          </div>
+        )}
       </div>
       <div className="footer">
         <button

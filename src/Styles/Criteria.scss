@@ -1,18 +1,27 @@
 .criteria-container {
   background-color: #f3f5f5;
-  padding: 10px;
   position: relative;
   display: flex;
   flex-direction: column;
   .header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    margin-top: -2px;
+    // background-color: red;
     width: 100%;
     position: sticky;
     top: 0;
     gap: 50px;
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      p {
+        font-size: 10px;
+        color: #0e2933;
+      }
+    }
     button {
       padding: 10px;
       border: none;
@@ -21,6 +30,9 @@
       font-weight: 500;
       background-color: #1c64f2;
       color: white;
+      display: flex;
+      gap: 4px;
+      align-items: center;
     }
   }
   .body {
@@ -31,7 +43,8 @@
     width: 100%;
     overflow-y: scroll;
     margin-bottom: 70px;
-    height: calc(100vh - 200px);
+    height: calc(100vh - 170px);
+    padding: 10px;
     p {
       width: 100%;
       display: flex;
@@ -55,6 +68,23 @@
         border-bottom: 1px solid #e5e7eb;
         padding-bottom: 10px;
         background-color: white;
+        .upper {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+          h4 {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+          }
+          span {
+            font-size: 10px;
+            color: #0e2933;
+          }
+        }
+        .btn-grp {
+          display: flex;
+        }
         button {
           padding: 10px;
           border: none;
@@ -65,7 +95,21 @@
           background-color: #1c64f2;
           color: white;
         }
+        .b1 {
+          display: flex;
+          gap: 4px;
+          align-items: center;
+        }
         .delete {
+          display: flex;
+          gap: 4px;
+          align-items: center;
+          padding: 10px;
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+          font-weight: 500;
+          margin-left: 10px;
           background-color: transparent;
           color: #0e2933;
         }
@@ -92,9 +136,32 @@
             margin-left: 10px;
           }
           input {
+            width: 300px;
             height: 40px;
+            text-align: center;
+            border: 1px solid;
+            border-radius: 5px;
           }
         }
+      }
+    }
+    .empty {
+      background-color: white;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      h1 {
+        font-size: 18px;
+        display: flex;
+        gap: 4px;
+        align-items: center;
+      }
+      p {
+        font-size: 12px;
+        color: #0e2933;
       }
     }
   }
@@ -132,10 +199,11 @@
   }
 }
 .input-field {
-  width: 200px;
-  padding: 8px;
-  margin: 5px;
-  height: 50px;
+  width: 300px;
+  height: 40px;
+  text-align: center;
+  border: 1px solid;
+  border-radius: 5px;
 }
 .date-range-picker {
   // width: 300px; /* Set desired width */

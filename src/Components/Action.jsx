@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { types } from "../FieldData";
-
+import MarkUnreadChatAltOutlinedIcon from "@mui/icons-material/MarkUnreadChatAltOutlined";
+import CampaignOutlinedIcon from "@mui/icons-material/CampaignOutlined";
 const Action = ({
   handleCheckboxChange,
   actionData,
@@ -14,6 +15,7 @@ const Action = ({
     <div className="action-container">
       <div className="header">
         <h1>Choose actions</h1>
+        <p>Choose the action you want to activate</p>
       </div>
       <div className="body">
         <div>
@@ -23,6 +25,7 @@ const Action = ({
             onChange={handleCheckboxChange("sendSlackNotification")}
             checked={actionData.sendSlackNotification}
           />{" "}
+          <MarkUnreadChatAltOutlinedIcon />
           Send Slack notifications
         </div>
         <div>
@@ -32,6 +35,7 @@ const Action = ({
             onChange={handleCheckboxChange("sendToSequence")}
             checked={actionData.sendToSequence}
           />{" "}
+          <CampaignOutlinedIcon />
           Send to Sequence
           {actionData.sendToSequence && (
             <select

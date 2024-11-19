@@ -2,7 +2,11 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { types, fieldData } from "../FieldData";
 import { toast } from "react-toastify";
-
+import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
+import AlignVerticalCenterOutlinedIcon from "@mui/icons-material/AlignVerticalCenterOutlined";
+import NotificationsActiveOutlinedIcon from "@mui/icons-material/NotificationsActiveOutlined";
+import SocialDistanceOutlinedIcon from "@mui/icons-material/SocialDistanceOutlined";
+import BusinessOutlinedIcon from "@mui/icons-material/BusinessOutlined";
 const NameEntity = ({
   formNameEntityState,
   updateNameEntityFormState,
@@ -13,67 +17,78 @@ const NameEntity = ({
   return (
     <div className="name-entity-container">
       <div className="body">
-        <div className="name-section">
-          <p>Name the playbook</p>
-          <input
-            type="text"
-            className="input-field"
-            placeholder="Eg: ICP Fit"
-            value={formNameEntityState.playbookName}
-            onChange={(e) =>
-              updateNameEntityFormState("playbookName", e.target.value)
-            }
-          />
-        </div>
-        <div className="entity-section">
-          <div className="sub-section">
-            <p>Select Entity Type</p>
-            <select
+        <div className="upper">
+          <div className="name-section">
+            <p>
+              Name the playbook <span>*</span>
+            </p>
+            <input
+              type="text"
               className="input-field"
-              value={formNameEntityState.entityType}
+              placeholder="Eg: ICP Fit"
+              value={formNameEntityState.playbookName}
               onChange={(e) =>
-                updateNameEntityFormState("entityType", e.target.value)
+                updateNameEntityFormState("playbookName", e.target.value)
               }
-            >
-              <option value="">Select Entity Type</option>
-              {types?.data?.fields?.entityType?.values?.map((item) => {
-                return <option value={item}>{item}</option>;
-              })}
-            </select>
+            />
           </div>
-          <div className="sub-section">
-            <p>Select Source Type</p>
-            <select
-              className="input-field"
-              value={formNameEntityState.sourceType}
-              onChange={(e) =>
-                updateNameEntityFormState("sourceType", e.target.value)
-              }
-            >
-              <option value="">Select Source Type</option>
-              {types?.data?.fields?.eventType?.values?.map((item) => {
-                return <option value={item}>{item}</option>;
-              })}
-            </select>
-          </div>
-          <div className="sub-section">
-            <button
-              onClick={() => {
-                const newCriterion = {
-                  id: Date.now(),
-                  field1: "",
-                  field2: "",
-                  field3: "",
-                };
-                setNameEntityFormState((prev) => ({
-                  ...prev,
-                  criteria: [...prev.criteria, newCriterion],
-                }));
-              }}
-              className="add-criterion-button"
-            >
-              Add Criterion
-            </button>
+          <div className="entity-section">
+            <div className="sub-section">
+              <p>
+                <BusinessOutlinedIcon />
+                Select Entity Type
+              </p>
+              <select
+                className="input-field"
+                value={formNameEntityState.entityType}
+                onChange={(e) =>
+                  updateNameEntityFormState("entityType", e.target.value)
+                }
+              >
+                <option value="">Select Entity Type</option>
+                {types?.data?.fields?.entityType?.values?.map((item) => {
+                  return <option value={item}>{item}</option>;
+                })}
+              </select>
+            </div>
+            <div className="sub-section">
+              <p>
+                <SocialDistanceOutlinedIcon />
+                Select Source Type
+              </p>
+              <select
+                className="input-field"
+                value={formNameEntityState.sourceType}
+                onChange={(e) =>
+                  updateNameEntityFormState("sourceType", e.target.value)
+                }
+              >
+                <option value="">Select Source Type</option>
+                {types?.data?.fields?.eventType?.values?.map((item) => {
+                  return <option value={item}>{item}</option>;
+                })}
+              </select>
+            </div>
+            <div className="sub-section">
+              <button
+                onClick={() => {
+                  const newCriterion = {
+                    id: Date.now(),
+                    field1: "",
+                    field2: "",
+                    field3: "",
+                  };
+                  setNameEntityFormState((prev) => ({
+                    ...prev,
+                    criteria: [...prev.criteria, newCriterion],
+                  }));
+                }}
+                className="add-criterion-button"
+              >
+                <AlignVerticalCenterOutlinedIcon />
+                Add Criterion
+              </button>
+            </div>
           </div>
         </div>
         <div className="criteria-list">
@@ -135,6 +150,7 @@ const NameEntity = ({
                       )
                     }
                     className="input-field"
+                    disabled={!field2}
                   >
                     <option value="">Select Option</option>
                     {field1 &&
@@ -155,6 +171,7 @@ const NameEntity = ({
                         e.target.value
                       )
                     }
+                    disabled={!field2}
                     className="input-field"
                   >
                     <option value="">Select Option</option>
@@ -180,6 +197,7 @@ const NameEntity = ({
                             e.target.value
                           )
                         }
+                        disabled={!field2}
                       />
                     </div>
                   )}
@@ -197,6 +215,7 @@ const NameEntity = ({
                             e.target.value
                           )
                         }
+                        disabled={!field2}
                       />
                     </div>
                   )}
@@ -230,6 +249,7 @@ const NameEntity = ({
                         e.target.value
                       )
                     }
+                    disabled={!field2}
                     className="input-field"
                   >
                     <option value="">Select Option</option>
@@ -248,21 +268,33 @@ const NameEntity = ({
                     }))
                   }
                   style={{
-                    padding: "10px",
                     border: "none",
                     borderRadius: "8px",
                     cursor: "pointer",
                     fontWeight: 500,
-                    backgroundColor: "red",
                     color: "white",
-                    width: "150px",
+                    width: "30px",
+                    height: "34px",
+                    background: "red",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
                   }}
                 >
-                  Remove Criterion
+                  <DeleteOutlinedIcon />
                 </button>
               </div>
             );
           })}
+          {formNameEntityState.criteria.length === 0 && (
+            <div className="empty">
+              <h1>
+                <NotificationsActiveOutlinedIcon />
+                No criteria defined
+              </h1>
+              <p>Please add some criteria to proceed next</p>
+            </div>
+          )}
         </div>
       </div>
 

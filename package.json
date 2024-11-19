@@ -5,6 +5,7 @@
   "dependencies": {
     "@date-io/date-fns": "^3.0.0",
     "@emotion/styled": "^11.13.0",
+    "@mui/icons-material": "^6.1.7",
     "@mui/x-date-pickers": "^7.22.2",
     "@mui/x-date-pickers-pro": "^7.22.2",
     "@testing-library/jest-dom": "^5.17.0",

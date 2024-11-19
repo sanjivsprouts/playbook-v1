@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
+import SentimentDissatisfiedOutlinedIcon from "@mui/icons-material/SentimentDissatisfiedOutlined";
 const Playbooks = ({
   playbook,
   setPlaybook,
@@ -17,13 +17,20 @@ const Playbooks = ({
   return (
     <div className="playbooks-container">
       <div className="header">
-        <h1>Playbooks</h1>
+        <div className="intro">
+          <h1>Playbooks</h1>
+          <p>
+            Assign target contacts to sequences using automated playbooks. Set
+            specific criteria to match new contacts, and drag playbooks to
+            prioritize their order for seamless assignment..
+          </p>
+        </div>
         <button
           onClick={() => {
             navigate("/new-playbook");
           }}
         >
-          Create new Playbook
+          <span>+</span>Create New Playbook
         </button>
       </div>
       <div className="body">
@@ -91,8 +98,15 @@ const Playbooks = ({
         })}
         {playbook.length === 0 && (
           <div className="empty">
+            <div>
+              <SentimentDissatisfiedOutlinedIcon sx={{ fontSize: "50px" }} />
+            </div>
             <h1>There are no existing playbook</h1>
-            <p>Create playbooks</p>
+            <p>
+              Effortlessly assign target contacts to sequences using automated
+              playbooks. Set specific criteria to match new contacts, and drag
+              playbooks to prioritize their order for seamless assignment.
+            </p>
           </div>
         )}
       </div>
