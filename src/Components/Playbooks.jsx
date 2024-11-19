@@ -89,6 +89,12 @@ const Playbooks = ({
             </div>
           );
         })}
+        {playbook.length === 0 && (
+          <div className="empty">
+            <h1>There are no existing playbook</h1>
+            <p>Create playbooks</p>
+          </div>
+        )}
       </div>
     </div>
   );

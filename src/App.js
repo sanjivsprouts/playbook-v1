@@ -66,7 +66,8 @@ function App() {
             if (!acc[field1]) {
               acc[field1] = {};
             }
-            acc[field1][field2] = field3;
+            acc[field1][field2] =
+              field3 === "true" ? true : field3 === "false" ? false : field3;
             return acc;
           },
           {}
@@ -79,7 +80,8 @@ function App() {
               if (!acc[field1]) {
                 acc[field1] = {};
               }
-              acc[field1][field2] = field3;
+              acc[field1][field2] =
+                field3 === "true" ? true : field3 === "false" ? false : field3;
               return acc;
             },
             {}
@@ -128,9 +130,6 @@ function App() {
       criteria: [],
     });
     setRulesets([]);
-    setPlayBook((pre) => {
-      return [...pre, data];
-    });
   };
   // For action
   const [actionData, setActionData] = useState({
